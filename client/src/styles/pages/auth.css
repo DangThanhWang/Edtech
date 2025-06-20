@@ -1,0 +1,30 @@
+/* client/src/styles/pages/auth.css */
+.auth-page {
+  width: 100%;
+}
+
+.auth-page__content {
+  max-width: 100%;
+}
+
+.auth-page__header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.auth-page__title {
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  color: var(--neutral-800);
+  margin-bottom: var(--space-md);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.auth-page__subtitle {
+  font-size: var(--font-size-base);
+  color: var(--neutral-600);
+  line-height: 1.5;
+}

@@ -1,0 +1,25 @@
+/* client/src/App.css */
+@import './styles/variables.css';
+@import './styles/globals.css';
+@import './styles/components/buttons.css';
+@import './styles/components/auth-layout.css';
+@import './styles/components/forms.css';
+@import './styles/components/loading.css';
+@import './styles/pages/auth.css';
+
+.App {
+  min-height: 100vh;
+  position: relative;
+}
+
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+.main-content {
+  flex: 1;
+  padding-top: 80px;
+}
