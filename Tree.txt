@@ -1,0 +1,364 @@
+quizlet-clone/
+├── client/                          # Frontend (React)
+│   ├── public/
+│   │   ├── index.html
+│   │   ├── favicon.ico
+│   │   ├── logo192.png
+│   │   ├── logo512.png
+│   │   ├── manifest.json
+│   │   └── robots.txt
+│   │
+│   ├── src/
+│   │   ├── components/              # React Components (.jsx)
+│   │   │   ├── common/              # Shared components
+│   │   │   │   ├── Header.jsx
+│   │   │   │   ├── Footer.jsx
+│   │   │   │   ├── Layout.jsx
+│   │   │   │   ├── LoadingSpinner.jsx
+│   │   │   │   ├── Modal.jsx
+│   │   │   │   ├── Sidebar.jsx
+│   │   │   │   ├── SearchBar.jsx
+│   │   │   │   └── Breadcrumb.jsx
+│   │   │   │
+│   │   │   ├── ui/                  # Basic UI components
+│   │   │   │   ├── Button.jsx
+│   │   │   │   ├── Input.jsx
+│   │   │   │   ├── Card.jsx
+│   │   │   │   ├── Badge.jsx
+│   │   │   │   ├── Avatar.jsx
+│   │   │   │   ├── Dropdown.jsx
+│   │   │   │   └── Tooltip.jsx
+│   │   │   │
+│   │   │   ├── forms/               # Form components
+│   │   │   │   ├── FormField.jsx
+│   │   │   │   ├── FormError.jsx
+│   │   │   │   ├── FormGroup.jsx
+│   │   │   │   └── ValidationMessage.jsx
+│   │   │   │
+│   │   │   ├── auth/                # Authentication components
+│   │   │   │   ├── LoginForm.jsx
+│   │   │   │   ├── RegisterForm.jsx
+│   │   │   │   ├── ForgotPasswordForm.jsx
+│   │   │   │   ├── ResetPasswordForm.jsx
+│   │   │   │   └── ProtectedRoute.jsx
+│   │   │   │
+│   │   │   ├── cards/               # Flashcard components
+│   │   │   │   ├── Flashcard.jsx
+│   │   │   │   ├── FlashcardPreview.jsx
+│   │   │   │   ├── CardEditor.jsx
+│   │   │   │   ├── CardList.jsx
+│   │   │   │   ├── CardItem.jsx
+│   │   │   │   └── CardUploader.jsx
+│   │   │   │
+│   │   │   ├── study/               # Study mode components
+│   │   │   │   ├── StudyModeSelector.jsx
+│   │   │   │   ├── FlashcardMode.jsx
+│   │   │   │   ├── LearnMode.jsx
+│   │   │   │   ├── TestMode.jsx
+│   │   │   │   ├── MatchMode.jsx
+│   │   │   │   ├── WriteMode.jsx
+│   │   │   │   ├── StudyTimer.jsx
+│   │   │   │   └── StudyProgress.jsx
+│   │   │   │
+│   │   │   ├── sets/                # Study set components
+│   │   │   │   ├── StudySetCard.jsx
+│   │   │   │   ├── StudySetList.jsx
+│   │   │   │   ├── StudySetGrid.jsx
+│   │   │   │   ├── StudySetEditor.jsx
+│   │   │   │   ├── StudySetInfo.jsx
+│   │   │   │   ├── StudySetActions.jsx
+│   │   │   │   └── StudySetFilters.jsx
+│   │   │   │
+│   │   │   ├── profile/             # User profile components
+│   │   │   │   ├── UserProfile.jsx
+│   │   │   │   ├── UserStats.jsx
+│   │   │   │   ├── UserSets.jsx
+│   │   │   │   ├── UserProgress.jsx
+│   │   │   │   ├── UserSettings.jsx
+│   │   │   │   └── UserAvatar.jsx
+│   │   │   │
+│   │   │   ├── home/                # Homepage specific components
+│   │   │   │   ├── HeroSection.jsx
+│   │   │   │   ├── FeaturesSection.jsx
+│   │   │   │   ├── FeatureCard.jsx
+│   │   │   │   ├── PopularSetsSection.jsx
+│   │   │   │   ├── TestimonialsSection.jsx
+│   │   │   │   └── CTASection.jsx
+│   │   │   │
+│   │   │   └── charts/              # Data visualization
+│   │   │       ├── ProgressChart.jsx
+│   │   │       ├── ScoreChart.jsx
+│   │   │       ├── StudyTimeChart.jsx
+│   │   │       └── PerformanceChart.jsx
+│   │   │
+│   │   ├── pages/                   # Page components (.jsx)
+│   │   │   ├── HomePage.jsx
+│   │   │   ├── BrowsePage.jsx
+│   │   │   ├── SearchPage.jsx
+│   │   │   ├── CreateSetPage.jsx
+│   │   │   ├── EditSetPage.jsx
+│   │   │   ├── StudySetPage.jsx
+│   │   │   ├── StudyPage.jsx
+│   │   │   ├── ProfilePage.jsx
+│   │   │   ├── DashboardPage.jsx
+│   │   │   ├── SettingsPage.jsx
+│   │   │   ├── LoginPage.jsx
+│   │   │   ├── RegisterPage.jsx
+│   │   │   ├── ForgotPasswordPage.jsx
+│   │   │   ├── NotFoundPage.jsx
+│   │   │   └── ErrorPage.jsx
+│   │   │
+│   │   ├── layouts/                 # Layout components (.jsx)
+│   │   │   ├── MainLayout.jsx
+│   │   │   ├── AuthLayout.jsx
+│   │   │   ├── StudyLayout.jsx
+│   │   │   └── ProfileLayout.jsx
+│   │   │
+│   │   ├── hooks/                   # Custom React hooks (.js)
+│   │   │   ├── useAuth.js
+│   │   │   ├── useStudySet.js
+│   │   │   ├── useLocalStorage.js
+│   │   │   ├── useSessionStorage.js
+│   │   │   ├── useDebounce.js
+│   │   │   ├── useToggle.js
+│   │   │   ├── useFetch.js
+│   │   │   ├── useForm.js
+│   │   │   ├── useProgress.js
+│   │   │   └── useTimer.js
+│   │   │
+│   │   ├── context/                 # React Context (.js)
+│   │   │   ├── AuthContext.js
+│   │   │   ├── StudyContext.js
+│   │   │   ├── ThemeContext.js
+│   │   │   ├── NotificationContext.js
+│   │   │   └── ProgressContext.js
+│   │   │
+│   │   ├── services/                # API services (.js)
+│   │   │   ├── api.js               # Base API configuration
+│   │   │   ├── authService.js
+│   │   │   ├── studySetService.js
+│   │   │   ├── cardService.js
+│   │   │   ├── userService.js
+│   │   │   ├── progressService.js
+│   │   │   ├── searchService.js
+│   │   │   └── uploadService.js
+│   │   │
+│   │   ├── utils/                   # Utility functions (.js)
+│   │   │   ├── constants.js
+│   │   │   ├── helpers.js
+│   │   │   ├── validation.js
+│   │   │   ├── formatters.js
+│   │   │   ├── storage.js
+│   │   │   ├── dateUtils.js
+│   │   │   ├── stringUtils.js
+│   │   │   ├── arrayUtils.js
+│   │   │   └── mathUtils.js
+│   │   │
+│   │   ├── lib/                     # Third-party library configs (.js)
+│   │   │   ├── axios.js
+│   │   │   ├── router.js
+│   │   │   └── queryClient.js
+│   │   │
+│   │   ├── assets/                  # Static assets
+│   │   │   ├── images/
+│   │   │   │   ├── logo.png
+│   │   │   │   ├── hero-bg.jpg
+│   │   │   │   ├── features/
+│   │   │   │   └── icons/
+│   │   │   ├── fonts/
+│   │   │   │   └── custom-fonts.woff2
+│   │   │   ├── sounds/
+│   │   │   │   ├── correct.mp3
+│   │   │   │   ├── incorrect.mp3
+│   │   │   │   └── complete.mp3
+│   │   │   └── videos/
+│   │   │       └── intro.mp4
+│   │   │
+│   │   ├── styles/                  # CSS/SCSS files
+│   │   │   ├── globals.css          # Global styles
+│   │   │   ├── variables.css        # CSS variables
+│   │   │   ├── reset.css            # CSS reset
+│   │   │   ├── utilities.css        # Utility classes
+│   │   │   ├── animations.css       # CSS animations
+│   │   │   ├── components/          # Component styles
+│   │   │   │   ├── buttons.css
+│   │   │   │   ├── forms.css
+│   │   │   │   ├── cards.css
+│   │   │   │   └── modals.css
+│   │   │   ├── pages/               # Page specific styles
+│   │   │   │   ├── home.css
+│   │   │   │   ├── browse.css
+│   │   │   │   ├── study.css
+│   │   │   │   └── profile.css
+│   │   │   └── themes/              # Theme files
+│   │   │       ├── light.css
+│   │   │       ├── dark.css
+│   │   │       └── high-contrast.css
+│   │   │
+│   │   ├── App.jsx                  # Main App component
+│   │   ├── App.css                  # App component styles
+│   │   ├── index.js                 # Entry point
+│   │   └── setupTests.js            # Test setup
+│   │
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── .gitignore
+│   └── README.md
+│
+├── server/                          # Backend (Node.js/Express)
+│   ├── src/
+│   │   ├── controllers/             # Route handlers
+│   │   │   ├── authController.js
+│   │   │   ├── userController.js
+│   │   │   ├── studySetController.js
+│   │   │   ├── cardController.js
+│   │   │   ├── progressController.js
+│   │   │   ├── searchController.js
+│   │   │   └── uploadController.js
+│   │   │
+│   │   ├── models/                  # Database models
+│   │   │   ├── User.js
+│   │   │   ├── StudySet.js
+│   │   │   ├── Card.js
+│   │   │   ├── StudySession.js
+│   │   │   ├── Progress.js
+│   │   │   ├── Category.js
+│   │   │   └── Favorite.js
+│   │   │
+│   │   ├── routes/                  # API routes
+│   │   │   ├── index.js             # Main router
+│   │   │   ├── auth.js
+│   │   │   ├── users.js
+│   │   │   ├── studySets.js
+│   │   │   ├── cards.js
+│   │   │   ├── progress.js
+│   │   │   ├── search.js
+│   │   │   ├── upload.js
+│   │   │   └── admin.js
+│   │   │
+│   │   ├── middleware/              # Express middleware
+│   │   │   ├── auth.js              # JWT authentication
+│   │   │   ├── validation.js        # Request validation
+│   │   │   ├── errorHandler.js      # Error handling
+│   │   │   ├── rateLimiter.js       # Rate limiting
+│   │   │   ├── cors.js              # CORS configuration
+│   │   │   ├── logger.js            # Request logging
+│   │   │   └── upload.js            # File upload handling
+│   │   │
+│   │   ├── services/                # Business logic
+│   │   │   ├── authService.js
+│   │   │   ├── emailService.js
+│   │   │   ├── uploadService.js
+│   │   │   ├── searchService.js
+│   │   │   ├── analyticsService.js
+│   │   │   └── notificationService.js
+│   │   │
+│   │   ├── utils/                   # Utility functions
+│   │   │   ├── database.js          # Database connection
+│   │   │   ├── tokenGenerator.js    # JWT utilities
+│   │   │   ├── emailTemplates.js    # Email templates
+│   │   │   ├── validators.js        # Data validation
+│   │   │   ├── helpers.js           # General helpers
+│   │   │   ├── constants.js         # Server constants
+│   │   │   └── logger.js            # Logging utilities
+│   │   │
+│   │   ├── config/                  # Configuration files
+│   │   │   ├── database.js          # Database config
+│   │   │   ├── jwt.js               # JWT config
+│   │   │   ├── email.js             # Email config
+│   │   │   ├── upload.js            # Upload config
+│   │   │   ├── cors.js              # CORS config
+│   │   │   └── environment.js       # Environment variables
+│   │   │
+│   │   ├── seeders/                 # Database seeders
+│   │   │   ├── userSeeder.js
+│   │   │   ├── studySetSeeder.js
+│   │   │   ├── cardSeeder.js
+│   │   │   └── categorySeeder.js
+│   │   │
+│   │   └── app.js                   # Express app configuration
+│   │
+│   ├── uploads/                     # File uploads directory
+│   │   ├── images/
+│   │   ├── audio/
+│   │   └── temp/
+│   │
+│   ├── logs/                        # Application logs
+│   │   ├── error.log
+│   │   ├── access.log
+│   │   └── combined.log
+│   │
+│   ├── tests/                       # Backend tests
+│   │   ├── unit/
+│   │   ├── integration/
+│   │   └── helpers/
+│   │
+│   ├── index.js                     # Server entry point
+│   ├── package.json
+│   ├── package-lock.json
+│   └── .gitignore
+│
+├── shared/                          # Shared utilities between client & server
+│   ├── constants/
+│   │   ├── studyModes.js
+│   │   ├── cardTypes.js
+│   │   ├── userRoles.js
+│   │   └── errors.js
+│   ├── validators/
+│   │   ├── authValidation.js
+│   │   ├── studySetValidation.js
+│   │   └── cardValidation.js
+│   └── types/
+│       ├── user.js
+│       ├── studySet.js
+│       └── card.js
+│
+├── docs/                           # Project documentation
+│   ├── API.md                      # API documentation
+│   ├── SETUP.md                    # Setup instructions
+│   ├── DEPLOYMENT.md               # Deployment guide
+│   ├── CONTRIBUTING.md             # Contributing guidelines
+│   ├── ARCHITECTURE.md             # Architecture overview
+│   └── FEATURES.md                 # Features documentation
+│
+├── scripts/                        # Build and deployment scripts
+│   ├── build.sh                    # Build script
+│   ├── deploy.sh                   # Deployment script
+│   ├── seed.js                     # Database seeding
+│   └── backup.sh                   # Database backup
+│
+├── tests/                          # Integration tests
+│   ├── e2e/                        # End-to-end tests
+│   ├── api/                        # API tests
+│   └── fixtures/                   # Test data
+│
+├── .env.example                    # Environment variables template
+├── .env.local.example              # Local environment template
+├── .gitignore                      # Git ignore rules
+├── .eslintrc.js                    # ESLint configuration
+├── .prettierrc                     # Prettier configuration
+├── docker-compose.yml              # Docker configuration
+├── Dockerfile                      # Docker image definition
+├── package.json                    # Root package.json for workspaces
+├── README.md                       # Project README
+└── CHANGELOG.md                    # Project changelog
+
+
+
+// client/src/App.js
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+function App() {
+  const [msg, setMsg] = useState('');
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/')
+      .then(res => setMsg(res.data))
+      .catch(err => console.error(err));
+  }, []);
+
+  return <div>{msg}</div>;
+}
+
+export default App;
