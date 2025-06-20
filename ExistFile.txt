@@ -1,0 +1,68 @@
+server/src/
+  controllers/
+    authController.js
+  middleware/
+    auth.js
+    errorHandler.js
+    rateLimiter.js
+  models/
+    User.js
+  routes/
+    auth.js
+  services/
+    emailService.js
+
+client/src/
+│   App.css
+│   App.jsx
+│   App.test.js
+│   index.css
+│   index.js
+│   logo.svg
+│   reportWebVitals.js
+│   setupTests.js
+│
+├── components/
+│   ├── auth/
+│   │   ├── LoginForm.jsx
+│   │   ├── RegisterForm.jsx
+│   │   └── ResetPasswordForm.jsx
+│   ├── common/
+│   │   ├── Button.jsx
+│   │   ├── Input.jsx
+│   │   └── Loader.jsx
+│   └── home/
+│       └── HeroSection.jsx
+│
+├── context/
+│   └── AuthContext.js
+│
+├── layouts/
+│   ├── AuthLayout.jsx
+│   └── MainLayout.jsx
+│
+├── pages/
+│   ├── DashboardPage.jsx
+│   ├── EmailVerificationPage.jsx
+│   ├── ForgotPasswordPage.jsx
+│   ├── LoginPage.jsx
+│   ├── RegisterPage.jsx
+│   ├── ResetPasswordPage.jsx
+│   └── UnauthorizedPage.jsx
+│
+├── services/
+│   └── authService.js
+│
+└── styles/
+    ├── components/
+    │   ├── button.css
+    │   ├── input.css
+    │   └── loader.css
+    └── pages/
+        ├── dashboard.css
+        ├── login.css
+        ├── profile.css
+        ├── auth.css
+        ├── home.css
+        ├── static.css
+        └── register.css
