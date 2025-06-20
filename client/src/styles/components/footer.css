@@ -50,7 +50,7 @@
 }
 
 .footer__description {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(1, 1, 1, 0.8);
   line-height: 1.7;
   margin-bottom: var(--space-md);
 }
@@ -66,7 +66,7 @@
 }
 
 .footer__link {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(8, 8, 8, 0.7);
   text-decoration: none;
   transition: all var(--transition-base);
   position: relative;
@@ -96,5 +96,5 @@
   border-top: 1px solid rgba(251, 228, 214, 0.2);
   padding-top: var(--space-xl);
   text-align: center;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(7, 7, 7, 0.6);
 }

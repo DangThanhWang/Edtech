@@ -1,4 +1,4 @@
-// client/src/services/authService.js
+// client/src/services/authService.js (Updated with new methods)
 import api from './api';
 
 const authService = {
@@ -42,6 +42,29 @@ const authService = {
 
   refreshToken: async () => {
     const response = await api.post('/auth/refresh');
+    return response;
+  },
+
+  verifyEmail: async (token) => {
+    const response = await api.post('/auth/verify-email', { token });
+    return response;
+  },
+
+  resendVerificationEmail: async () => {
+    const response = await api.post('/auth/resend-verification');
+    return response;
+  },
+
+  changePassword: async (currentPassword, newPassword) => {
+    const response = await api.post('/auth/change-password', {
+      currentPassword,
+      newPassword
+    });
+    return response;
+  },
+
+  updateProfile: async (profileData) => {
+    const response = await api.put('/auth/profile', profileData);
     return response;
   }
 };

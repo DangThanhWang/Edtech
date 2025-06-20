@@ -2,8 +2,8 @@
 :root {
   /* New Color Palette */
   --primary-900: #98d801;        /* Main primary - deep blue */
-  --primary-700: #1bfd848c;        /* Secondary blue */
-  --primary-500: #4a7dfe72;        /* Lighter blue */
+  --primary-700: #1bfd84c1;        /* Secondary blue */
+  --primary-500: #1ade4eb5;        /* Lighter blue */
   --primary-300: #7BA3FF;        /* Very light blue */
   --primary-100: #B8D0FF;        /* Ultra light blue */
   --accent-500: #FBE4D6;         /* Cream accent */

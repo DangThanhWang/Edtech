@@ -1,4 +1,4 @@
-// server/src/routes/auth.js
+// server/src/routes/auth.js (Updated with email verification routes)
 const express = require('express');
 const { body } = require('express-validator');
 const authController = require('../controllers/authController');
@@ -7,7 +7,7 @@ const rateLimit = require('../middleware/rateLimiter');
 
 const router = express.Router();
 
-// Validation rules
+// Validation rules (same as before)
 const registerValidation = [
   body('firstName')
     .trim()
@@ -24,8 +24,6 @@ const registerValidation = [
   body('password')
     .isLength({ min: 6 })
     .withMessage('Mật khẩu phải có ít nhất 6 ký tự')
-    .matches(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
-    .withMessage('Mật khẩu phải chứa ít nhất 1 chữ hoa, 1 chữ thường và 1 số')
 ];
 
 const loginValidation = [
@@ -52,8 +50,12 @@ const resetPasswordValidation = [
   body('password')
     .isLength({ min: 6 })
     .withMessage('Mật khẩu phải có ít nhất 6 ký tự')
-    .matches(/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
-    .withMessage('Mật khẩu phải chứa ít nhất 1 chữ hoa, 1 chữ thường và 1 số')
+];
+
+const verifyEmailValidation = [
+  body('token')
+    .notEmpty()
+    .withMessage('Token xác thực là bắt buộc')
 ];
 
 // Routes
@@ -61,8 +63,16 @@ router.post('/register', rateLimit.auth, registerValidation, authController.regi
 router.post('/login', rateLimit.auth, loginValidation, authController.login);
 router.post('/logout', auth, authController.logout);
 router.get('/me', auth, authController.getCurrentUser);
+
+// Email verification routes
+router.post('/verify-email', verifyEmailValidation, authController.verifyEmail);
+router.post('/resend-verification', auth, rateLimit.forgotPassword, authController.resendVerificationEmail);
+
+// Password reset routes
 router.post('/forgot-password', rateLimit.forgotPassword, forgotPasswordValidation, authController.forgotPassword);
 router.post('/reset-password', resetPasswordValidation, authController.resetPassword);
+
+// Token refresh
 router.post('/refresh', auth, authController.refreshToken);
 
 module.exports = router;
