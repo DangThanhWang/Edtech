@@ -8,6 +8,8 @@
 @import './styles/components/about-us.css';
 @import './styles/pages/auth.css';
 @import './styles/pages/static.css';
+@import './styles/pages/create-study-set.css';
+@import './styles/pages/my-sets.css';
 
 .App {
   min-height: 100vh;

@@ -1,5 +1,6 @@
 // server/index.js (Updated)
 const express = require('express');
+const path = require('path');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const helmet = require('helmet');
@@ -9,6 +10,8 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+app.set('trust proxy', 1);
 
 // Security middleware
 app.use(helmet());
@@ -20,12 +23,16 @@ app.use(cors({
 // Rate limiting
 app.use('/api/', rateLimit.api);
 
+// Serve uploaded files
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/auth', require('./src/routes/auth'));
+app.use('/api/study-sets', require('./src/routes/studySet'));
 
 // Health check
 app.get('/api/health', (req, res) => {

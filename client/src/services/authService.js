@@ -1,4 +1,4 @@
-// client/src/services/authService.js (Updated with new methods)
+// client/src/services/authService.js (Updated - Remove email verification methods)
 import api from './api';
 
 const authService = {
@@ -27,7 +27,7 @@ const authService = {
 
   getCurrentUser: async () => {
     const response = await api.get('/auth/me');
-    return response.data;
+    return response.data.data;
   },
 
   forgotPassword: async (email) => {
@@ -45,15 +45,7 @@ const authService = {
     return response;
   },
 
-  verifyEmail: async (token) => {
-    const response = await api.post('/auth/verify-email', { token });
-    return response;
-  },
-
-  resendVerificationEmail: async () => {
-    const response = await api.post('/auth/resend-verification');
-    return response;
-  },
+  // REMOVED: verifyEmail, resendVerificationEmail
 
   changePassword: async (currentPassword, newPassword) => {
     const response = await api.post('/auth/change-password', {

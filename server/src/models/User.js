@@ -1,4 +1,4 @@
-// server/src/models/User.js
+// server/src/models/User.js (Updated - Remove email verification fields)
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -41,14 +41,7 @@ const userSchema = new mongoose.Schema({
     enum: ['user', 'admin'],
     default: 'user'
   },
-  isEmailVerified: {
-    type: Boolean,
-    default: false
-  },
-  emailVerificationToken: {
-    type: String,
-    select: false
-  },
+  // REMOVED: isEmailVerified, emailVerificationToken
   passwordResetToken: {
     type: String,
     select: false
@@ -150,18 +143,7 @@ userSchema.methods.generatePasswordResetToken = function() {
   return resetToken;
 };
 
-// Instance method to generate email verification token
-userSchema.methods.generateEmailVerificationToken = function() {
-  const verificationToken = jwt.sign(
-    { id: this._id },
-    process.env.JWT_SECRET,
-    { expiresIn: '24h' }
-  );
-  
-  this.emailVerificationToken = verificationToken;
-  
-  return verificationToken;
-};
+// REMOVED: generateEmailVerificationToken method
 
 // Static method to find user by credentials
 userSchema.statics.findByCredentials = async function(email, password) {

@@ -1,4 +1,4 @@
-// client/src/context/AuthContext.js
+// client/src/context/AuthContext.js (Updated - Remove email verification logic)
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import authService from '../services/authService';
 
@@ -52,7 +52,7 @@ const initialState = {
   isAuthenticated: false,
   user: null,
   token: localStorage.getItem('token'),
-  isLoading: false,
+  isLoading: true,
   error: null
 };
 
@@ -63,6 +63,7 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem('token');
     if (token) {
       authService.setAuthToken(token);
+      
       // Verify token validity
       authService.getCurrentUser()
         .then(user => {
@@ -71,10 +72,13 @@ export const AuthProvider = ({ children }) => {
             payload: { user, token }
           });
         })
-        .catch(() => {
+        .catch(error => {
           localStorage.removeItem('token');
           authService.setAuthToken(null);
+          dispatch({ type: 'LOGOUT' });
         });
+    } else {
+      dispatch({ type: 'LOGOUT' });
     }
   }, []);
 
@@ -83,7 +87,7 @@ export const AuthProvider = ({ children }) => {
       dispatch({ type: 'LOGIN_START' });
       
       const response = await authService.login(credentials);
-      const { user, token } = response.data;
+      const { user, token } = response.data.data;
       
       localStorage.setItem('token', token);
       authService.setAuthToken(token);
@@ -109,7 +113,7 @@ export const AuthProvider = ({ children }) => {
       dispatch({ type: 'LOGIN_START' });
       
       const response = await authService.register(userData);
-      const { user, token } = response.data;
+      const { user, token } = response.data.data;
       
       localStorage.setItem('token', token);
       authService.setAuthToken(token);

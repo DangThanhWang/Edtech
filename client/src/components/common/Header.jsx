@@ -36,7 +36,10 @@ const Header = () => {
           <li><Link to="/" className="header__link">Trang chủ</Link></li>
           <li><Link to="/browse" className="header__link">Khám phá</Link></li>
           {isAuthenticated && (
-            <li><Link to="/create" className="header__link">Tạo bộ thẻ</Link></li>
+            <li><Link to="/create-set" className="header__link">Tạo bộ thẻ</Link></li>
+          )}
+          {isAuthenticated && (
+            <li><Link to="/my-sets" className="header__link">Học phần của tôi</Link></li>
           )}
           <li><Link to="/about" className="header__link">Giới thiệu</Link></li>
         </ul>

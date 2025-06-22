@@ -1,4 +1,4 @@
-// client/src/components/forms/FormField.jsx
+// client/src/components/forms/FormField.jsx (Updated to support textarea and select)
 import React, { useState } from 'react';
 
 const FormField = ({ 
@@ -10,6 +10,8 @@ const FormField = ({
   error, 
   placeholder,
   required = false,
+  rows = 3,
+  children,
   ...props 
 }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,6 +19,54 @@ const FormField = ({
 
   const isPassword = type === 'password';
   const inputType = isPassword && showPassword ? 'text' : type;
+
+  const renderInput = () => {
+    if (type === 'textarea') {
+      return (
+        <textarea
+          name={name}
+          value={value}
+          onChange={onChange}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          placeholder={placeholder}
+          className="form-field__input form-field__textarea"
+          rows={rows}
+          {...props}
+        />
+      );
+    }
+
+    if (type === 'select') {
+      return (
+        <select
+          name={name}
+          value={value}
+          onChange={onChange}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          className="form-field__input form-field__select"
+          {...props}
+        >
+          {children}
+        </select>
+      );
+    }
+
+    return (
+      <input
+        type={inputType}
+        name={name}
+        value={value}
+        onChange={onChange}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+        placeholder={placeholder}
+        className="form-field__input"
+        {...props}
+      />
+    );
+  };
 
   return (
     <div className="form-field">
@@ -26,17 +76,7 @@ const FormField = ({
       </label>
       
       <div className={`form-field__wrapper ${isFocused ? 'form-field__wrapper--focused' : ''} ${error ? 'form-field__wrapper--error' : ''}`}>
-        <input
-          type={inputType}
-          name={name}
-          value={value}
-          onChange={onChange}
-          onFocus={() => setIsFocused(true)}
-          onBlur={() => setIsFocused(false)}
-          placeholder={placeholder}
-          className="form-field__input"
-          {...props}
-        />
+        {renderInput()}
         
         {isPassword && (
           <button

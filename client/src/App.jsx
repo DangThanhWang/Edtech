@@ -1,6 +1,7 @@
 // client/src/App.jsx (Complete Final Version)
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { ToastProvider } from './context/ToastContext';
 import MainLayout from './layouts/MainLayout';
@@ -11,13 +12,14 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
-import EmailVerificationPage from './pages/EmailVerificationPage';
 import DashboardPage from './pages/DashboardPage';
 import UnauthorizedPage from './pages/UnauthorizedPage';
+import CreateStudySetPage from './pages/CreateStudySetPage';
+import MySetsPage from './pages/MySetsPage';
+import StudySetDetailPage from './pages/StudySetDetailPage';
 
 // Components
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import EmailVerificationBanner from './components/auth/EmailVerificationBanner';
 
 // Styles
 import './App.css';
@@ -32,7 +34,6 @@ function App() {
               {/* Public routes */}
               <Route path="/" element={
                 <MainLayout>
-                  <EmailVerificationBanner />
                   <HomePage />
                 </MainLayout>
               } />
@@ -42,13 +43,11 @@ function App() {
               <Route path="/register" element={<RegisterPage />} />
               <Route path="/forgot-password" element={<ForgotPasswordPage />} />
               <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
-              <Route path="/verify-email/:token" element={<EmailVerificationPage />} />
               
               {/* Protected routes */}
               <Route path="/dashboard" element={
                 <ProtectedRoute>
                   <MainLayout>
-                    <EmailVerificationBanner />
                     <DashboardPage />
                   </MainLayout>
                 </ProtectedRoute>
@@ -57,7 +56,6 @@ function App() {
               {/* Coming soon protected routes */}
               <Route path="/browse" element={
                 <MainLayout>
-                  <EmailVerificationBanner />
                   <ComingSoonPage 
                     title="Khám phá Bộ thẻ" 
                     description="Tìm kiếm và học tập với hàng triệu bộ thẻ được tạo bởi cộng đồng"
@@ -65,11 +63,18 @@ function App() {
                   />
                 </MainLayout>
               } />
+
+              <Route path="/create-set" element={
+                <ProtectedRoute>
+                  <MainLayout>
+                    <CreateStudySetPage />
+                  </MainLayout>
+                </ProtectedRoute>
+              } />
               
               <Route path="/create" element={
                 <ProtectedRoute>
                   <MainLayout>
-                    <EmailVerificationBanner />
                     <ComingSoonPage 
                       title="Tạo bộ thẻ mới" 
                       description="Tạo bộ thẻ học tập của riêng bạn với công cụ dễ sử dụng"
@@ -91,10 +96,25 @@ function App() {
                 </ProtectedRoute>
               } />
 
+              <Route path="/study-set/:id" element={
+                <ProtectedRoute>
+                  <MainLayout>
+                    <StudySetDetailPage />
+                  </MainLayout>
+                </ProtectedRoute>
+              } />
+
+              <Route path="/my-sets" element={
+                <ProtectedRoute>
+                  <MainLayout>
+                    <MySetsPage />
+                  </MainLayout>
+                </ProtectedRoute>
+              } />
+
               <Route path="/profile" element={
                 <ProtectedRoute>
                   <MainLayout>
-                    <EmailVerificationBanner />
                     <ComingSoonPage 
                       title="Hồ sơ cá nhân" 
                       description="Quản lý thông tin cá nhân và theo dõi tiến độ học tập"
@@ -276,8 +296,8 @@ const NotFoundPage = () => (
         Trang bạn tìm kiếm không tồn tại hoặc đã được di chuyển.
       </p>
       <div className="error-page__actions">
-        <a href="/" className="btn btn--primary">Về trang chủ</a>
-        <a href="/browse" className="btn btn--outline">Khám phá</a>
+        <Link to="/" className="btn btn--primary">Về trang chủ</Link>
+        <Link to="/browse" className="btn btn--outline">Khám phá</Link>
       </div>
     </div>
   </div>
