@@ -1,0 +1,27 @@
+.study-set-card__study-actions {
+  position: absolute;
+  bottom: var(--space-md);
+  right: var(--space-md);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.study-set-card:hover .study-set-card__study-actions {
+  opacity: 1;
+}
+
+.study-set-card__study-btn {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-xs);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  box-shadow: var(--shadow-md);
+}
+
+.study-set-card__study-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}

@@ -56,7 +56,7 @@ const StudySetCard = ({
 
   return (
     <div className="study-set-card">
-      <Link to={`/study-set/${studySet._id}`} className="study-set-card__link">
+      <Link to={`/study/${studySet._id}`} className="study-set-card__link">
         <div className="study-set-card__header">
           <div className="study-set-card__title-section">
             <h3 className="study-set-card__title">{studySet.title}</h3>
@@ -109,6 +109,16 @@ const StudySetCard = ({
         )}
 
       </Link>
+
+      {/* <div className="study-set-card__study-actions">
+        <Link 
+          to={`/study/${studySet._id}`}
+          className="btn btn--primary btn--small study-set-card__study-btn"
+          onClick={(e) => e.stopPropagation()}
+        >
+          📚 Học ngay
+        </Link>
+      </div> */}
       
       {showActions && (
         <div className="study-set-card__actions">

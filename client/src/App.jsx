@@ -17,6 +17,7 @@ import UnauthorizedPage from './pages/UnauthorizedPage';
 import CreateStudySetPage from './pages/CreateStudySetPage';
 import MySetsPage from './pages/MySetsPage';
 import StudySetDetailPage from './pages/StudySetDetailPage';
+import StudySessionPage from './pages/StudySessionPage';
 
 // Components
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -71,19 +72,23 @@ function App() {
                   </MainLayout>
                 </ProtectedRoute>
               } />
-              
-              <Route path="/create" element={
+
+              <Route path="/study/:studySetId" element={
                 <ProtectedRoute>
-                  <MainLayout>
-                    <ComingSoonPage 
-                      title="Tạo bộ thẻ mới" 
-                      description="Tạo bộ thẻ học tập của riêng bạn với công cụ dễ sử dụng"
-                      icon="📝"
-                    />
-                  </MainLayout>
+                  <StudySessionPage />
                 </ProtectedRoute>
               } />
-
+              
+              {/* <Route path="/study-modes" element={
+                <MainLayout>
+                  <ComingSoonPage 
+                    title="Chế độ học tập" 
+                    description="Các chế độ học khác nhau: Test, Match, Write"
+                    icon="🎯"
+                  />
+                </MainLayout>
+              } /> */}
+{/* 
               <Route path="/study/:id" element={
                 <ProtectedRoute>
                   <MainLayout>
@@ -94,7 +99,7 @@ function App() {
                     />
                   </MainLayout>
                 </ProtectedRoute>
-              } />
+              } /> */}
 
               <Route path="/study-set/:id" element={
                 <ProtectedRoute>

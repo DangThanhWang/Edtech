@@ -1,0 +1,115 @@
+/* client/src/styles/pages/study-session.css  */
+.study-session-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--accent-alpha-10) 0%, rgba(255, 255, 255, 0.8) 100%);
+  padding: var(--space-lg) 0;
+}
+
+.study-session-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-xl);
+}
+
+.study-session-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+.study-session-back {
+  background: none;
+  border: none;
+  color: var(--primary-900);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+}
+
+.study-session-back:hover {
+  background: var(--primary-alpha-10);
+}
+
+.study-session-title h1 {
+  font-size: var(--font-size-xl);
+  color: var(--neutral-800);
+  margin-bottom: var(--space-xs);
+}
+
+.study-session-title p {
+  color: var(--neutral-600);
+  font-size: var(--font-size-sm);
+}
+
+.study-session-controls {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.study-session-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+}
+
+.study-session-loading,
+.study-session-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  gap: var(--space-lg);
+}
+
+.study-session-pause {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.study-session-pause-content {
+  background: white;
+  padding: var(--space-3xl);
+  border-radius: var(--radius-xl);
+  text-align: center;
+  box-shadow: var(--shadow-2xl);
+}
+
+.study-session-pause-content h2 {
+  margin-bottom: var(--space-md);
+  color: var(--neutral-800);
+}
+
+.study-session-pause-content p {
+  margin-bottom: var(--space-xl);
+  color: var(--neutral-600);
+}
+
+.study-session-loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  backdrop-filter: blur(5px);
+}

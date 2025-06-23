@@ -94,7 +94,7 @@ const Header = () => {
             Khám phá
           </Link>
           {isAuthenticated && (
-            <Link to="/create" className="header__mobile-link" onClick={() => setMobileMenuOpen(false)}>
+            <Link to="/create-set" className="header__mobile-link" onClick={() => setMobileMenuOpen(false)}>
               Tạo bộ thẻ
             </Link>
           )}

@@ -694,9 +694,9 @@
   }
 }
 
-/* .study-set-card {
-  animation: slideInUp 0.4s ease-out;
-} */
+.study-set-card {
+  animation: slideInUp 1s ease-out forwards;
+}
 
 .study-set-card:nth-child(1) { animation-delay: 0.05s; }
 .study-set-card:nth-child(2) { animation-delay: 0.1s; }
@@ -731,8 +731,8 @@
     border-width: 2px;
   }
 }
-
+/* 
 .study-set-card {
   opacity: 1 !important;
   transform: translateY(0px) !important;
-}
+} */

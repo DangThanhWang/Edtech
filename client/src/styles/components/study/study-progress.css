@@ -1,0 +1,112 @@
+/* client/src/styles/components/study/study-progress.css */
+.study-progress {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-xl);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  border: 1px solid var(--accent-alpha-20);
+  box-shadow: var(--shadow-md);
+}
+
+.study-progress__stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.study-progress__stat {
+  text-align: center;
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--gradient-card);
+  transition: transform var(--transition-base);
+}
+
+.study-progress__stat:hover {
+  transform: translateY(-2px);
+}
+
+.study-progress__number {
+  display: block;
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  color: var(--primary-900);
+  margin-bottom: var(--space-xs);
+}
+
+.study-progress__label {
+  font-size: var(--font-size-sm);
+  color: var(--neutral-600);
+  font-weight: 500;
+}
+
+.study-progress__bar {
+  position: relative;
+}
+
+.study-progress__track {
+  width: 100%;
+  height: 12px;
+  background: var(--neutral-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.study-progress__fill {
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.study-progress__fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+.study-progress__current {
+  position: absolute;
+  top: -2px;
+  width: 16px;
+  height: 16px;
+  background: white;
+  border: 3px solid var(--primary-900);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  transition: left 0.5s ease;
+  box-shadow: var(--shadow-md);
+}
+
+.study-progress__text {
+  text-align: center;
+  margin-top: var(--space-md);
+  font-size: var(--font-size-sm);
+  color: var(--neutral-600);
+  font-weight: 500;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@media (max-width: 768px) {
+  .study-progress__stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+  
+  .study-progress__number {
+    font-size: var(--font-size-lg);
+  }
+}
