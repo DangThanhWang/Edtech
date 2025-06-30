@@ -1,9 +1,131 @@
-// server/src/controllers/studySetController.js (Updated with advanced features)
+// server/src/controllers/studySetController.js (Updated with browse method)
 const StudySet = require('../models/StudySet');
 const User = require('../models/User');
 const { validationResult } = require('express-validator');
 
 const studySetController = {
+  // Get public study sets for browse page (NEW METHOD)
+  getBrowseStudySets: async (req, res) => {
+    try {
+      const page = parseInt(req.query.page) || 1;
+      const limit = parseInt(req.query.limit) || 12;
+      const skip = (page - 1) * limit;
+      
+      // Sorting options
+      const sortBy = req.query.sortBy || 'createdAt';
+      const sortOrder = req.query.sortOrder === 'asc' ? 1 : -1;
+      
+      // Search and filtering
+      const search = req.query.search || '';
+      const category = req.query.category || '';
+      const creator = req.query.creator || '';
+
+      console.log('🔍 Get browse study sets query:', {
+        sortBy,
+        sortOrder,
+        search,
+        category,
+        creator,
+        page,
+        limit
+      });
+
+      // Build query - only public study sets
+      let query = { privacy: 'public' };
+
+      // Add search filter
+      if (search) {
+        query.$or = [
+          { title: { $regex: search, $options: 'i' } },
+          { description: { $regex: search, $options: 'i' } },
+          { tags: { $in: [new RegExp(search, 'i')] } }
+        ];
+      }
+
+      // Add category filter
+      if (category) {
+        query.category = category;
+      }
+
+      // Add creator filter
+      if (creator) {
+        query.creator = creator;
+      }
+
+      // Build sort object
+      let sortObj = {};
+      if (sortBy === 'cardCount') {
+        sortObj['stats.totalCards'] = sortOrder;
+      } else if (sortBy === 'studyCount') {
+        sortObj['stats.studyCount'] = sortOrder;
+      } else {
+        sortObj[sortBy] = sortOrder;
+      }
+
+      // Add secondary sort by createdAt if primary sort is not createdAt
+      if (sortBy !== 'createdAt') {
+        sortObj.createdAt = -1;
+      }
+
+      console.log('🔍 Final browse query:', query);
+      console.log('📈 Sort object:', sortObj);
+
+      // Execute query
+      const studySets = await StudySet.find(query)
+        .populate('creator', 'firstName lastName avatar')
+        .sort(sortObj)
+        .skip(skip)
+        .limit(limit)
+        .lean();
+
+      const total = await StudySet.countDocuments(query);
+
+      // Get category counts for filter UI (only public study sets)
+      const categoryStats = await StudySet.aggregate([
+        { $match: { privacy: 'public' } },
+        { $group: { _id: '$category', count: { $sum: 1 } } },
+        { $sort: { count: -1 } }
+      ]);
+
+      console.log('✅ Found browse study sets:', {
+        count: studySets.length,
+        total,
+        categoryStats
+      });
+
+      res.json({
+        success: true,
+        data: {
+          studySets,
+          pagination: {
+            current: page,
+            pages: Math.ceil(total / limit),
+            total,
+            limit
+          },
+          filters: {
+            categoryStats
+          },
+          query: {
+            sortBy,
+            sortOrder: sortOrder === 1 ? 'asc' : 'desc',
+            search,
+            category,
+            creator
+          }
+        }
+      });
+
+    } catch (error) {
+      console.error('❌ Get browse study sets error:', error);
+      res.status(500).json({
+        success: false,
+        message: 'Lỗi server khi lấy danh sách học phần công khai',
+        error: process.env.NODE_ENV === 'development' ? error.message : undefined
+      });
+    }
+  },
+
   // Get user's study sets with sorting and filtering (Enhanced)
   getUserStudySets: async (req, res) => {
     try {
@@ -274,8 +396,6 @@ const studySetController = {
   },
 
   // Existing methods (createStudySet, getStudySetById, updateStudySet, deleteStudySet)
-  // ... (keep all existing methods from previous implementation)
-
   createStudySet: async (req, res) => {
     try {
       console.log('📥 Create StudySet Request:', req.body);
@@ -368,11 +488,7 @@ const studySetController = {
         });
       }
 
-      console.log('👤 User ID:', req.user.id);
-      console.log('📚 StudySet Creator ID:', studySet.creator._id.toString());
-      console.log('🔒 Privacy:', studySet.privacy);
-
-
+      // Allow access to public study sets for all users, private only for owners
       if (studySet.privacy === 'private' && 
           studySet.creator._id.toString() !== req.user.id.toString()) {
         return res.status(403).json({

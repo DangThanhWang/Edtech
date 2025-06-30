@@ -11,6 +11,7 @@
 @import './styles/pages/my-sets.css';
 @import './styles/pages/about.css';
 @import './styles/pages/study.css';
+@import './styles/pages/browse.css';
 
 .App {
   min-height: 100vh;

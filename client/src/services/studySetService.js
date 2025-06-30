@@ -1,4 +1,4 @@
-// client/src/services/studySetService.js (Updated with new methods)
+// client/src/services/studySetService.js (Updated with browse method)
 import api from './api';
 
 const studySetService = {
@@ -31,6 +31,32 @@ const studySetService = {
     });
 
     const response = await api.get(`/study-sets/my-sets?${queryParams}`);
+    return response;
+  },
+
+  // Get public study sets for browse page (NEW METHOD)
+  getBrowseStudySets: async (params = {}) => {
+    const {
+      page = 1,
+      limit = 12,
+      sortBy = 'createdAt',
+      sortOrder = 'desc',
+      search = '',
+      category = '',
+      creator = ''
+    } = params;
+
+    const queryParams = new URLSearchParams({
+      page: page.toString(),
+      limit: limit.toString(),
+      sortBy,
+      sortOrder,
+      ...(search && { search }),
+      ...(category && { category }),
+      ...(creator && { creator })
+    });
+
+    const response = await api.get(`/study-sets/browse?${queryParams}`);
     return response;
   },
 

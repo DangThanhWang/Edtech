@@ -1,4 +1,4 @@
-// server/src/routes/studySet.js (Updated with new routes)
+// server/src/routes/studySet.js (Updated with browse route)
 const express = require('express');
 const { body } = require('express-validator');
 const studySetController = require('../controllers/studySetController');
@@ -72,14 +72,17 @@ router.post('/upload', auth, upload.single('file'), handleUploadError, async (re
   }
 });
 
+// Browse public study sets (NEW ROUTE - place before parameterized routes)
+router.get('/browse', studySetController.getBrowseStudySets);
+
 // Study set CRUD routes
 router.post('/', auth, createStudySetValidation, studySetController.createStudySet);
-router.get('/my-sets', auth, studySetController.getUserStudySets); // Enhanced with sorting
-router.get('/stats', auth, studySetController.getStudySetStats); // New stats endpoint
+router.get('/my-sets', auth, studySetController.getUserStudySets);
+router.get('/stats', auth, studySetController.getStudySetStats);
 router.get('/:id', auth, studySetController.getStudySetById);
 router.put('/:id', auth, createStudySetValidation, studySetController.updateStudySet);
 router.delete('/:id', auth, studySetController.deleteStudySet);
-router.post('/:id/duplicate', auth, studySetController.duplicateStudySet); // New duplicate endpoint
+router.post('/:id/duplicate', auth, studySetController.duplicateStudySet);
 
 // Serve uploaded files
 router.get('/files/:type/:filename', (req, res) => {

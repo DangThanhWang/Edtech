@@ -19,6 +19,7 @@ import MySetsPage from './pages/MySetsPage';
 import StudySetDetailPage from './pages/StudySetDetailPage';
 import StudySessionPage from './pages/StudySessionPage';
 import AboutPage from './pages/AboutPage';
+import BrowsePage from './pages/BrowsePage';
 
 // Components
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -55,14 +56,10 @@ function App() {
                 </ProtectedRoute>
               } />
               
-              {/* Coming soon protected routes */}
+              {/* Browse route - Updated to use BrowsePage */}
               <Route path="/browse" element={
                 <MainLayout>
-                  <ComingSoonPage 
-                    title="Khám phá Bộ thẻ" 
-                    description="Tìm kiếm và học tập với hàng triệu bộ thẻ được tạo bởi cộng đồng"
-                    icon="🔍"
-                  />
+                  <BrowsePage />
                 </MainLayout>
               } />
 
