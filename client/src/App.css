@@ -5,11 +5,12 @@
 @import './styles/components/auth-layout.css';
 @import './styles/components/forms.css';
 @import './styles/components/loading.css';
-@import './styles/components/about-us.css';
 @import './styles/pages/auth.css';
 @import './styles/pages/static.css';
 @import './styles/pages/create-study-set.css';
 @import './styles/pages/my-sets.css';
+@import './styles/pages/about.css';
+@import './styles/pages/study.css';
 
 .App {
   min-height: 100vh;

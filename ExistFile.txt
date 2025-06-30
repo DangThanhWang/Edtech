@@ -1,18 +1,4 @@
-server/src/
-  controllers/
-    authController.js
-  middleware/
-    auth.js
-    errorHandler.js
-    rateLimiter.js
-  models/
-    User.js
-  routes/
-    auth.js
-  services/
-    emailService.js
-
-client/src/
+F:\PROJECTS\EDUTECH\CLIENT\SRC
 │   App.css
 │   App.jsx
 │   App.test.js
@@ -22,47 +8,136 @@ client/src/
 │   reportWebVitals.js
 │   setupTests.js
 │
-├── components/
-│   ├── auth/
-│   │   ├── LoginForm.jsx
-│   │   ├── RegisterForm.jsx
-│   │   └── ResetPasswordForm.jsx
-│   ├── common/
-│   │   ├── Button.jsx
-│   │   ├── Input.jsx
-│   │   └── Loader.jsx
-│   └── home/
-│       └── HeroSection.jsx
+├───components
+│   ├───auth
+│   │       ForgotPasswordForm.jsx
+│   │       LoginForm.jsx
+│   │       ProtectedRoute.jsx
+│   │       RegisterForm.jsx
+│   │       ResetPasswordForm.jsx
+│   │
+│   ├───common
+│   │       Footer.jsx
+│   │       Header.jsx
+│   │       LoadingSpinner.jsx
+│   │       Toast.jsx
+│   │
+│   ├───forms
+│   │       FormField.jsx
+│   │
+│   ├───home
+│   │       AboutUsSection.jsx
+│   │       CTASection.jsx
+│   │       FeatureCard.jsx
+│   │       FeaturesSection.jsx
+│   │       HeroSection.jsx
+│   │       PopularSetsSection.jsx
+│   │       StudySetCard.jsx
+│   │
+│   ├───study
+│   │       StudyCard.jsx
+│   │       StudyProgress.jsx
+│   │       StudyResults.jsx
+│   │       StudySettings.jsx
+│   │
+│   └───study-sets
+│           CardEditor.jsx
+│           CreateStudySetForm.jsx
+│           MediaUpload.jsx
+│           Pagination.jsx
+│           StudySetCard.jsx
+│           StudySetFilters.jsx
+│           StudySetGrid.jsx
 │
-├── context/
-│   └── AuthContext.js
+├───context
+│       AuthContext.js
+│       ToastContext.js
 │
-├── layouts/
-│   ├── AuthLayout.jsx
-│   └── MainLayout.jsx
+├───layouts
+│       AuthLayout.jsx
+│       MainLayout.jsx
 │
-├── pages/
-│   ├── DashboardPage.jsx
-│   ├── EmailVerificationPage.jsx
-│   ├── ForgotPasswordPage.jsx
-│   ├── LoginPage.jsx
-│   ├── RegisterPage.jsx
-│   ├── ResetPasswordPage.jsx
-│   └── UnauthorizedPage.jsx
+├───pages
+│       CreateStudySetPage.jsx
+│       DashboardPage.jsx
+│       ForgotPasswordPage.jsx
+│       HomePage.jsx
+│       LoginPage.jsx
+│       MySetsPage.jsx
+│       RegisterPage.jsx
+│       ResetPasswordPage.jsx
+│       StudySessionPage.jsx
+│       StudySetDetailPage.jsx
+│       UnauthorizedPage.jsx
 │
-├── services/
-│   └── authService.js
+├───services
+│       api.js
+│       authService.js
+│       studySessionService.js
+│       studySetService.js
 │
-└── styles/
-    ├── components/
-    │   ├── button.css
-    │   ├── input.css
-    │   └── loader.css
-    └── pages/
-        ├── dashboard.css
-        ├── login.css
-        ├── profile.css
-        ├── auth.css
-        ├── home.css
-        ├── static.css
-        └── register.css
+└───styles
+    │   globals.css
+    │   variables.css
+    │
+    ├───components
+    │   │   about-us.css
+    │   │   auth-layout.css
+    │   │   buttons.css
+    │   │   cards.css
+    │   │   footer.css
+    │   │   forms.css
+    │   │   header.css
+    │   │   loading.css
+    │   │   modals.css
+    │   │   settings.css
+    │   │   toast.css
+    │   │
+    │   └───study
+    │           study-card.css
+    │           study-progress.css
+    │           study-results.css
+    │           study-settings.css
+    │
+    ├───pages
+    │       auth.css
+    │       browse.css
+    │       create-study-set.css
+    │       dashboard.css
+    │       home.css
+    │       my-sets.css
+    │       profile.css
+    │       static.css
+    │       study-session.css
+    │       study.css
+    │
+    └───themes
+            dark.css
+            high-constrast.css
+            light.css
+
+
+F:\PROJECTS\EDUTECH\SERVER\SRC
+├───controllers
+│       authController.js
+│       studySessionController.js
+│       studySetController.js
+│
+├───middleware
+│       auth.js
+│       errorHandler.js
+│       rateLimiter.js
+│       upload.js
+│
+├───models
+│       StudySession.js
+│       StudySet.js
+│       User.js
+│
+├───routes
+│       auth.js
+│       studySession.js
+│       studySet.js
+│
+└───services
+        emailService.js

@@ -1,4 +1,4 @@
-// client/src/App.jsx (Complete Final Version)
+// client/src/App.jsx (Updated - với About page mới)
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -18,6 +18,7 @@ import CreateStudySetPage from './pages/CreateStudySetPage';
 import MySetsPage from './pages/MySetsPage';
 import StudySetDetailPage from './pages/StudySetDetailPage';
 import StudySessionPage from './pages/StudySessionPage';
+import AboutPage from './pages/AboutPage';
 
 // Components
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -78,28 +79,6 @@ function App() {
                   <StudySessionPage />
                 </ProtectedRoute>
               } />
-              
-              {/* <Route path="/study-modes" element={
-                <MainLayout>
-                  <ComingSoonPage 
-                    title="Chế độ học tập" 
-                    description="Các chế độ học khác nhau: Test, Match, Write"
-                    icon="🎯"
-                  />
-                </MainLayout>
-              } /> */}
-{/* 
-              <Route path="/study/:id" element={
-                <ProtectedRoute>
-                  <MainLayout>
-                    <ComingSoonPage 
-                      title="Chế độ học tập" 
-                      description="Học tập với flashcards, kiểm tra và các chế độ thú vị khác"
-                      icon="🎯"
-                    />
-                  </MainLayout>
-                </ProtectedRoute>
-              } /> */}
 
               <Route path="/study-set/:id" element={
                 <ProtectedRoute>
@@ -141,7 +120,7 @@ function App() {
                 </ProtectedRoute>
               } />
               
-              {/* Static pages */}
+              {/* Static pages - Sử dụng AboutPage mới */}
               <Route path="/about" element={
                 <MainLayout>
                   <AboutPage />
@@ -194,34 +173,6 @@ const ComingSoonPage = ({ title, description, icon }) => (
           <a href="/" className="btn btn--primary">Về trang chủ</a>
           <a href="/dashboard" className="btn btn--outline">Dashboard</a>
         </div>
-      </div>
-    </div>
-  </div>
-);
-
-// About Page Component
-const AboutPage = () => (
-  <div className="static-page">
-    <div className="static-page__container">
-      <div className="static-page__header">
-        <h1>Về StudyCards</h1>
-        <p>Nền tảng học tập thông minh với flashcards</p>
-      </div>
-      <div className="static-page__content">
-        <section>
-          <h2>Sứ mệnh</h2>
-          <p>StudyCards được tạo ra với mục đích giúp học sinh và sinh viên học tập hiệu quả hơn thông qua phương pháp flashcards hiện đại.</p>
-        </section>
-        <section>
-          <h2>Tính năng nổi bật</h2>
-          <ul>
-            <li>Tạo bộ thẻ học tập dễ dàng</li>
-            <li>Nhiều chế độ học tập thú vị</li>
-            <li>Theo dõi tiến độ học tập</li>
-            <li>Chia sẻ với cộng đồng</li>
-            <li>Học tập mọi lúc, mọi nơi</li>
-          </ul>
-        </section>
       </div>
     </div>
   </div>
