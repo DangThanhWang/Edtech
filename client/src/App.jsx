@@ -23,6 +23,7 @@ import BrowsePage from './pages/BrowsePage';
 
 // Components
 import ProtectedRoute from './components/auth/ProtectedRoute';
+import ScrollToTop from "./components/common/ScrollToTop";
 
 // Styles
 import './App.css';
@@ -33,6 +34,7 @@ function App() {
       <AuthProvider>
         <Router>
           <div className="App">
+            <ScrollToTop />
             <Routes>
               {/* Public routes */}
               <Route path="/" element={
